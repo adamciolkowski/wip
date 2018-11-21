@@ -21,7 +21,8 @@ public class Main {
 
     private void setup() {
         Card.loadData();
-        neuralnet = new Network(196);
+        Sigmoid.setupSigmoid();
+        neuralnet = new Network(196, 49, 10);
         neuralnet.respond(testing_set[cardNum]);
 
         SwingUtilities.invokeLater(() -> {
