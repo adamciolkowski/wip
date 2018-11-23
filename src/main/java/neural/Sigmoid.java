@@ -18,10 +18,10 @@ class Sigmoid {
     // once the sigmoid has been set up, this function accesses it:
     static float lookupSigmoid(float x) {
 
-        return g_sigmoid[(int) constrain((float) floor((x + 5.0f) * 20.0f), 0f, 199f)];
+        return g_sigmoid[(int) constrain((int) floor((x + 5.0f) * 20.0f), 0, 199)];
     }
 
-    private static float constrain(float value, float lower, float upper) {
+    private static float constrain(int value, int lower, int upper) {
         if (value > upper)
             return upper;
         if (value < lower)

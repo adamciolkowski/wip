@@ -24,12 +24,9 @@ class Card { // This class contains all the functions to format and save the dat
     void imageLoad(byte[] images, int offset) { // Images is an array of 1,960,000 bytes, each one representing a pixel (0-255) of the 10,000 * 14x14 (196) images
         // We know one image consists of 196 bytes so the location is: offset*196
         for (int i = 0; i < 196; i++) {
-            byte image = images[i + offset];
-            float value = (image + 128) / 128.0f - 1f;
-//            System.out.println(value);
-            inputs[i] = value; // We then store each pixel in the array inputs[] after converting it from (0 - 255) to (+1 - -1) as they vary on the greyscale
+            byte b = images[i + offset];
+            inputs[i] = Byte.toUnsignedInt(b) / 128.0f - 1f; // We then store each pixel in the array inputs[] after converting it from (0 - 255) to (+1 - -1) as they vary on the greyscale
         }
-//        System.exit(0);
     }
 
     void labelLoad(byte[] labels, int offset) {  // Labels is an array of 10,000 bytes, each representing the answer of each image

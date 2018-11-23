@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 import static neural.Card.testing_set;
-import static neural.Main.cardNum;
+import static neural.Main.*;
 
 public class NeuralPanel extends JPanel {
 
@@ -28,7 +28,15 @@ public class NeuralPanel extends JPanel {
 
         network.display(g);
 
-        g.drawString("neural.Card number: #" + cardNum, width * 0.05f, height * 0.9f);
-        g.drawString("neural.Card label: " + testing_set[cardNum].output, width * 0.05f, height * 0.95f);
+        g.setColor(Color.BLACK);
+        g.drawString("Test card: #" + testCard, width * 0.18f, height * 0.89f);
+        g.drawString("Train card: " + trainCard, width * 0.18f, height * 0.93f);
+
+        g.drawString("Total train: " + totalTrain, width * 0.32f, height * 0.89f);
+        g.drawString("Total test: " + totalTest, width * 0.32f, height * 0.93f);
+
+        if (totalTest > 0) sucess = (float) totalRight / totalTest;
+        g.drawString("Success rate: " + sucess, width * 0.44f, height * 0.89f);
+        g.drawString("Card label: " + testing_set[testCard].output, width * 0.44f, height * 0.93f);
     }
 }
